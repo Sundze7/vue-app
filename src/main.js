@@ -10,7 +10,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import App from "./App.vue";
 import "./assets/tailwind.css";
+import router from './router'
 
 library.add(fas, faGithub, faGoogle, faLinkedin);
 
-createApp(App).component("fa", FontAwesomeIcon).mount("#app");
+createApp(App).use(router).component("fa", FontAwesomeIcon).mount("#app");

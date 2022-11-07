@@ -9,7 +9,9 @@
           ><span class="text-red-800">/CORP</span>
         </div>
         <div class="py-20 mt-8">
-          <h4 class="text-left mb-4 text-xl text-gray-500">Welcome Back ...</h4>
+          <h4 class="text-left mb-4 text-xl text-gray-500 font-semibold">
+            Welcome Back ...
+          </h4>
           <h2 class="text-4xl font-bold text-blue-500">
             Sign In To Your Account
           </h2>
@@ -34,54 +36,59 @@
               />
             </a>
           </div>
-          <p class="text-gray-500 mt-8 mb-6 text-lg">
+          <p class="text-gray-500 mt-8 mb-6 text-lg font-semibold">
             or use your Email Account
           </p>
           <form action="">
-            <div class="flex bg-gray-100 w-full p-2 items-center mb-6">
+            <div
+              class="flex bg-gray-200 w-full p-2 items-center mb-6 rounded-full"
+            >
               <fa icon="envelope" class="text-gray-400 m-2" />
               <input
                 type="email"
                 name="email"
                 placeholder="Enter Email"
-                class="bg-gray-100 outline-none flex-1"
+                class="bg-gray-100 outline-none flex-1 p-2"
               />
             </div>
-            <div class="flex bg-gray-100 w-full p-2 items-center mb-10">
+            <div
+              class="flex bg-gray-200 w-full p-2 items-center mb-10 rounded-full border focus:border-blue-500 focus:outline-none"
+            >
               <fa icon="key" class="text-gray-400 m-2" />
               <input
                 type="password"
                 name="password"
                 placeholder="Enter Password"
-                class="bg-gray-100 outline-none flex-1"
+                class="bg-gray-100 outline-none flex-1 p-2"
               />
             </div>
             <div class="flex justify-between mb-10">
-              <label class="flex items-center">
+              <label class="flex items-center font-semibold">
                 <input type="checkbox" name="remember" class="mr-1" />
                 Remember me
               </label>
-              <a href="" class="text-right hover:text-blue-500"
+              <a href="" class="text-right hover:text-blue-500 font-semibold"
                 >Forgot Password?</a
               >
             </div>
             <button
               class="border-2 border-blue-800 text-blue-800 rounded-full px-12 py-2 inline-block font-semibold hover:bg-blue-800 hover:text-white"
             >
-              Sign In
+              Log In
             </button>
           </form>
         </div>
       </div>
 
-      <div class="w-2/5 bg-blue-800 text-white rounded-tr-2xl py-60 px-12">
+      <div class="w-2/5 bg-blue-800 text-white rounded-tr-2xl py-60 px-8">
         <h2 class="text-4xl font-bold mb-2">Hello Friend</h2>
         <div class="border-2 w-10 border-white inline-block mb-10"></div>
         <p class="mb-20 text-2xl">
-          Fill up your personal information and start the journey with us
+          If you do not have an account with us yet, fill up your personal
+          information and start a journey with us
         </p>
         <a
-          href=""
+          href="SignUp.vue"
           class="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-blue-800"
         >
           Sign Up
@@ -93,7 +100,7 @@
 
 <script>
 export default {
-  name: "SignIn",
+  name: "Login",
 };
 </script>
 
