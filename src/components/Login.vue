@@ -13,7 +13,7 @@
             Welcome Back ...
           </h4>
           <h2 class="text-4xl font-bold text-blue-500">
-            Sign In To Your Account
+            Login To Your Account
           </h2>
           <div class="border-2 w-20 border-blue-500 inline-block mb-2"></div>
           <div class="flex justify-center my-6">
@@ -56,10 +56,16 @@
             >
               <fa icon="key" class="text-gray-400 m-2" />
               <input
-                type="password"
+                :type="passwordFieldType"
+                v-model="password"
                 name="password"
                 placeholder="Enter Password"
                 class="bg-gray-100 outline-none flex-1 p-2"
+              />
+              <fa
+                icon="eye"
+                @click="switchVisibility"
+                class="text-gray-400 m-2"
               />
             </div>
             <div class="flex justify-between mb-10">
@@ -87,12 +93,12 @@
           If you do not have an account with us yet, fill up your personal
           information and start a journey with us
         </p>
-        <a
-          href="SignUp.vue"
+        <router-link
+          to="/signup"
           class="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-blue-800"
         >
           Sign Up
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
@@ -101,6 +107,18 @@
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      password: "",
+      passwordFieldType: "password",
+    };
+  },
+  methods: {
+    switchVisibility() {
+      this.passwordFieldType =
+        this.passwordFieldType === "password" ? "text" : "password";
+    },
+  },
 };
 </script>
 
