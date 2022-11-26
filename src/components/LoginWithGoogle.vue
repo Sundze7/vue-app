@@ -8,14 +8,8 @@
 
 <script>
 import { inject } from "vue";
-import { mapState } from "vuex";
 export default {
-  name: "HomeView",
-  computed: {
-    ...mapState("auth", {
-      name: (state) => state.name,
-    }),
-  },
+  name: "LoginWithGoogle",
   setup() {
     const Vue3GoogleOauth = inject("Vue3GoogleOauth");
 

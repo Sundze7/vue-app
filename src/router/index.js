@@ -17,6 +17,16 @@ const routes = [
     name: "Login",
     component: () => import("/src/components/Login.vue"),
   },
+  {
+    path: "/loginwithgoogle",
+    name: "LoginWithGoogle",
+    component: () => import("/src/components/LoginWithGoogle.vue"),
+  },
+  {
+    path: "/googlelogin",
+    name: "GoogleLogin",
+    component: () => import("/src/components//GoogleLogin.vue"),
+  },
 ];
 
 const router = createRouter({

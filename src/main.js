@@ -10,9 +10,19 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import App from "./App.vue";
 import "./assets/tailwind.css";
-import router from './router'
-import store from './store'
+import router from "./router";
+import store from "./store/store";
 
 library.add(fas, faGithub, faGoogle, faLinkedin);
 
-createApp(App).use(store).use(router).component("fa", FontAwesomeIcon).mount("#app");
+const app = createApp(App);
+import gAuthPlugin from "vue3-google-oauth2";
+let gauthClientId =
+  "779574074115-vaqbbbmgj932d3tqngh8ri34ffjlnr2m.apps.googleusercontent.com";
+app.use(gAuthPlugin, {
+  clientId: gauthClientId,
+  scope: "email",
+  prompt: "consent",
+});
+
+app.use(store).use(router).component("fa", FontAwesomeIcon).mount("#app");

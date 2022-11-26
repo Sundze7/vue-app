@@ -39,7 +39,7 @@
           <p class="text-gray-500 mt-8 mb-6 text-lg font-semibold">
             or use your Email Account
           </p>
-          <form action="">
+          <form @submit.prevent="onLogin">
             <div
               class="flex bg-gray-200 w-full p-2 items-center mb-6 rounded-full"
             >
@@ -47,27 +47,38 @@
               <input
                 type="email"
                 name="email"
+                v-model.trim="email"
                 placeholder="Enter Email"
                 class="bg-gray-100 outline-none flex-1 p-2"
               />
             </div>
+
+            <div class="error text-red-400" v-if="errors.email">
+              {{ errors.email }}
+            </div>
+
             <div
               class="flex bg-gray-200 w-full p-2 items-center mb-10 rounded-full border focus:border-blue-500 focus:outline-none"
             >
               <fa icon="key" class="text-gray-400 m-2" />
               <input
                 :type="passwordFieldType"
-                v-model="password"
+                v-model.trim="password"
                 name="password"
                 placeholder="Enter Password"
                 class="bg-gray-100 outline-none flex-1 p-2"
               />
               <fa
                 icon="eye"
-                @click="switchVisibility"
+                @click="switchPasswordVisibility"
                 class="text-gray-400 m-2"
               />
             </div>
+
+            <div class="error text-red-400" v-if="errors.password">
+              {{ errors.password }}
+            </div>
+
             <div class="flex justify-between mb-10">
               <label class="flex items-center font-semibold">
                 <input type="checkbox" name="remember" class="mr-1" />
@@ -105,18 +116,36 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import SignupValidations from "../services/signupValidations";
+
 export default {
   name: "Login",
   data() {
     return {
       password: "",
+      email: "",
       passwordFieldType: "password",
+      errors: [],
     };
   },
+  computed: {
+    ...mapState("auth", {
+      name: (state) => state.name,
+    }),
+  },
   methods: {
-    switchVisibility() {
+    switchPasswordVisibility() {
       this.passwordFieldType =
         this.passwordFieldType === "password" ? "text" : "password";
+    },
+    onLogin() {
+      let validations = new SignupValidations(this.email, this.password);
+
+      this.errors = validations.checkValidations();
+      if (this.errors.length) {
+        return false;
+      }
     },
   },
 };
